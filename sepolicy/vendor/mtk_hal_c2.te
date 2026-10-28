@@ -1,0 +1,2 @@
+# AIDL IComponentStore/default is registered with servicemanager
+binder_use(mtk_hal_c2)

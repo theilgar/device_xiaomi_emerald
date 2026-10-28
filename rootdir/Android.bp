@@ -112,3 +112,11 @@ prebuilt_etc {
     sub_dir: "init/hw",
     vendor: true
 }
+
+prebuilt_etc {
+    name: "init.batterysecret.rc",
+    src: "etc/init/hw/init.batterysecret.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+

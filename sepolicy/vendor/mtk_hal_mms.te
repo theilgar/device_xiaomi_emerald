@@ -1,0 +1,7 @@
+binder_use(mtk_hal_mms)
+add_service(mtk_hal_mms, mtk_hal_mms_service)
+
+allow { mtk_hal_camera mtk_hal_c2 } mtk_hal_mms_service:service_manager find;
+binder_call({ mtk_hal_camera mtk_hal_c2 }, mtk_hal_mms)
+binder_call(mtk_hal_mms, { mtk_hal_camera mtk_hal_c2 })
+

@@ -39,6 +39,11 @@ on post-fs-data
 
     # dual calib
     mkdir /data/vendor/camera/ 0777 system camera
+
+    # Sensor calibration
+    chmod 777 /mnt/vendor/nvcfg/sensor
+    chmod +r /mnt/vendor/nvcfg/sensor/gyro_cali.json
+    chmod +r /mnt/vendor/nvcfg/sensor/gyro_bias.json
     chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
     chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wu.bin
     chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wt.bin
@@ -99,7 +104,7 @@ on property:vendor.sysctl.tx=0
 on property:vendor.sysctl.tx=1
     exec /vendor/bin/iwpriv wlan0 driver "SET_PWR_CTRL MySar 1"
 
-service sarcalibration /vendor/bin/sns_sensors_test_and_cal -c 72,3,50000000,0
+service sarcalibration /vendor/bin/sns_sensors_test_and_cal -c 57,3,50000000,0
     class main
     user root
     disabled
@@ -203,9 +208,6 @@ on property:persist.sys.MT6789.dt2w=0
 on property:persist.sys.MT6789.dt2w=1
     exec - root -- /system/bin/sendevent /dev/input/event2 0 1 5
 
-# NFC
-service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc-service.nxp
-    override
-    class early_hal
-    user nfc
-    group nfc
+# mi_wmark (6.12 vendor module)
+on property:sys.boot_completed=1
+    write /sys/kernel/mi_wmark/extra_free_kbytes "11144 20 30375"

@@ -1,0 +1,16 @@
+type sardiag, domain;
+type sardiag_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(sardiag)
+
+allow sardiag hf_manager_device:chr_file rw_file_perms;
+allow sardiag vendor_file:file r_file_perms;
+r_dir_file(sardiag, sysfs_leds)
+
+set_prop(sardiag, vendor_sar_calibrate_prop)
+
+allow sardiag mnt_vendor_file:dir rw_dir_perms;
+allow sardiag mnt_vendor_file:file create_file_perms;
+allow sardiag sensor_data_file:dir rw_dir_perms;
+allow sardiag sensor_data_file:file create_file_perms;
+

@@ -91,11 +91,23 @@ TARGET_EXCLUDES_AUDIOFX := true
 $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
 $(call soong_config_set,android_hardware_audio,run_64bit,true)
 PRODUCT_PACKAGES += \
-    android.hardware.audio.service \
-    android.hardware.audio@7.0-impl:64 \
-    android.hardware.audio.effect@7.0-impl:64 \
-    audio.bluetooth.default:64 \
-    audio.usb.default:64
+    audio.usb.default:64 \
+    libaudioutils_shim
+
+PRODUCT_PACKAGES += \
+    android.hardware.audio.common-V4-ndk.vendor \
+    android.hardware.audio.common-V3-ndk.vendor \
+    android.hardware.audio.core-V3-ndk.vendor \
+    android.hardware.audio.core.sounddose-V3-ndk.vendor \
+    android.hardware.audio.effect-V2-ndk.vendor \
+    android.hardware.audio.effect-V3-ndk.vendor \
+    android.hardware.bluetooth.audio-V4-ndk.vendor \
+    android.hardware.bluetooth.audio-V5-ndk.vendor \
+    android.hardware.soundtrigger3-V3-ndk.vendor \
+    android.media.audio.common.types-V4-ndk.vendor \
+    android.media.audio.common.types-V3-ndk.vendor \
+    android.media.audio.eraser.types-V1-ndk.vendor \
+    android.media.soundtrigger.types-V3-ndk.vendor
 
 PRODUCT_PACKAGES += \
     audio_policy.stub \
@@ -114,25 +126,31 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
-    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth-service.mediatek \
-    android.hardware.bluetooth.audio-impl:64
+    android.hardware.bluetooth-service.mediatek
 
 # Boot control (A/B Updates)
 PRODUCT_PACKAGES += \
     com.android.hardware.boot \
     android.hardware.boot-service.default_recovery
 
+# Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.device-V3-ndk.vendor \
+    android.hardware.camera.common-V1-ndk.vendor \
+    android.hardware.camera.metadata-V3-ndk.vendor \
+    android.hardware.camera.provider-V3-ndk.vendor
+
 # Display
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.3-service \
+    android.hardware.graphics.allocator-V2-ndk.vendor \
+    android.hardware.graphics.common-V5-ndk.vendor \
+    android.hardware.graphics.common-V6-ndk.vendor \
+    android.hardware.graphics.composer3-V4-ndk.vendor \
+    android.hardware.drm.common-V1-ndk.vendor \
     android.hardware.memtrack-service.mediatek \
     android.software.vulkan.deqp.level-2024-03-01.prebuilt.xml \
     android.software.opengles.deqp.level-2024-03-01.prebuilt.xml
@@ -152,9 +170,6 @@ PRODUCT_PACKAGES += \
     libudfpshandler \
     sensors.xiaomi.v2:64
 
-PRODUCT_PACKAGES += \
-    vendor.xiaomi.hardware.fx.tunnel@1.0.vendor
-
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
@@ -169,8 +184,11 @@ PRODUCT_COPY_FILES += \
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl:64 \
-    android.hardware.gatekeeper@1.0-service
+    android.hardware.gatekeeper-V1-ndk.vendor
+
+# GNSS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss-V5-ndk.vendor
 
 # Health
 PRODUCT_PACKAGES += \
@@ -183,7 +201,7 @@ PRODUCT_COPY_FILES += \
 
 # Keymint
 PRODUCT_PACKAGES += \
-    android.hardware.hardware_keystore_V3.xml
+    android.hardware.hardware_keystore_V4.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.keystore.app_attest_key.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.keystore.app_attest_key.xml \
@@ -200,11 +218,19 @@ PRODUCT_PACKAGES := $(filter-out android.hardware.cas@1.2-service android.hardwa
 PRODUCT_PACKAGES_SHIPPING_API_LEVEL_33 := $(filter-out android.hardware.cas@1.2-service,$(PRODUCT_PACKAGES_SHIPPING_API_LEVEL_33))
 
 # Media (C2)
+$(call soong_config_set_bool,android_hardware_mediatek_codec2,aidl_only,true)
+
 PRODUCT_PACKAGES += \
+    android.hardware.media.c2-mtk-service \
+    android.hardware.media.c2-V1-ndk.vendor \
+    libcodec2_aidl.vendor \
     libcodec2_hidl_plugin:64 \
     libcodec2_soft_common.vendor:64 \
     libeffects:64 \
     libeffectsconfig.vendor:64
+
+PRODUCT_VENDOR_PROPERTIES += \
+    media.c2.hal.selection=aidl
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -222,7 +248,7 @@ PRODUCT_PACKAGES += \
     Tag
 
 PRODUCT_PACKAGES += \
-    android.hardware.nfc-service.nxp
+    android.hardware.nfc-V2-ndk.vendor
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
@@ -236,34 +262,39 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
-    vendor.mediatek.hardware.mtkpower@1.2-service.stub \
+    android.hardware.health-V1-ndk.vendor \
+    android.hardware.power-V6-ndk.vendor \
     libmtkperf_client_vendor \
-    libmtkperf_client \
-    libpowerhalwrap_vendor
+    libmtkperf_client
 
 PRODUCT_PACKAGES += \
     DT2W-Service-MT6789
 
-# Power configurations
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+# Radio
+PRODUCT_PACKAGES += \
+    android.hardware.radio-V4-ndk.vendor \
+    android.hardware.radio.config-V4-ndk.vendor \
+    android.hardware.radio.data-V4-ndk.vendor \
+    android.hardware.radio.ims-V3-ndk.vendor \
+    android.hardware.radio.messaging-V4-ndk.vendor \
+    android.hardware.radio.modem-V4-ndk.vendor \
+    android.hardware.radio.network-V4-ndk.vendor \
+    android.hardware.radio.sap-V1-ndk.vendor \
+    android.hardware.radio.sim-V4-ndk.vendor \
+    android.hardware.radio.voice-V4-ndk.vendor
 
 # Reduce system server verbosity.
 PRODUCT_SYSTEM_SERVER_DEBUG_INFO := false
 
 # Sensors
 PRODUCT_PACKAGES += \
+    android.hardware.sensors-V2-ndk.vendor \
     android.hardware.sensors-service.xiaomi-multihal \
     android.hardware.sensors@2.0-subhal-impl-1.0:64 \
     sensors.dynamic_sensor_hal:64
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
-
-# Soundtrigger
-PRODUCT_PACKAGES += \
-    android.hardware.soundtrigger@2.3-impl:64
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -346,6 +377,7 @@ PRODUCT_PACKAGES += \
     init.mtkgki.rc \
     init.project.rc \
     init.sensor_2_0.rc \
+    init.batterysecret.rc \
     init.recovery.usb.rc \
     fstab.mt6789 \
     fstab.mt6789.vendor_ramdisk \

@@ -4,3 +4,9 @@ add_hwservice(hal_dms_server, hal_dms_hwservice)
 allow hal_dms_client hal_dms_hwservice:hwservice_manager find;
 
 binder_call(hal_dms, platform_app)
+binder_call(hal_dms, system_app)
+binder_call(hal_dms_server, hal_dms_client)
+
+add_service(hal_dms_server, hal_dms_service)
+allow hal_dms_client hal_dms_service:service_manager find;
+

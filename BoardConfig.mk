@@ -57,17 +57,9 @@ BOARD_BOOTCONFIG := \
     androidboot.boot_devices=bootdevice,11230000.mmc,112b0000.ufshci \
     kernel.rcu_nocbs=all \
     kernel.rcutree.enable_rcu_lazy=1 \
-    kernel.rcupdate.rcu_cpu_stall_cputime=1 \
-    kernel.rcupdate.rcu_expedited=1 \
-    kernel.log_buf_len=1024K \
-    kernel.sysctl.kernel.sched_pelt_multiplier=4 \
-    restrict_cma_redirect \
-    android_arch_task_struct_size=512
+    kernel.rcupdate.rcu_cpu_stall_cputime=1
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
-BOARD_KERNEL_CMDLINE += rcupdate.rcu_expedited=1
-BOARD_KERNEL_CMDLINE += log_buf_len=1024K
-BOARD_KERNEL_CMDLINE += sysctl.kernel.sched_pelt_multiplier=4
 
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x3fff8000
@@ -103,14 +95,8 @@ TARGET_USES_VULKAN := true
 
 # Kernel modules
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load.vendor_ramdisk))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(KERNEL_PATH)/modules_ramdisk/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))
-
-# Also add recovery modules to vendor ramdisk
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load.recovery))
-RECOVERY_MODULES := $(addprefix $(KERNEL_PATH)/modules_ramdisk/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
-
-# Prevent duplicated entries (to solve duplicated build rules problem)
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(sort $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES) $(RECOVERY_MODULES))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules_ramdisk/*.ko)
 
 # Vendor modules (installed to vendor_dlkm)
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load))

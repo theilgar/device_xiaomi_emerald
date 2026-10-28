@@ -1,0 +1,13 @@
+type iwpriv, domain;
+type iwpriv_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(iwpriv)
+
+# iwpriv wlan0 driver "..." (SAR power control from init.project.rc)
+allow iwpriv self:capability { net_admin net_raw };
+allow iwpriv self:udp_socket { create ioctl };
+allowxperm iwpriv self:udp_socket ioctl {
+    unpriv_sock_ioctls
+    SIOCDEVPRIVATE SIOCDEVPRIVATE_1
+    0x8b00-0x8bff
+};

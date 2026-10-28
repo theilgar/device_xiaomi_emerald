@@ -1,11 +1,11 @@
-# Firmware from OS2.0.202.0.VOGEUXM
+# Firmware from OS3.0.302.0.WNFMIXM (anti-rollback index 1)
 dpm.img;AB
 gz.img;AB
-lk_fenrir.img:lk.img;AB|b6eef4fdd3d8174897dcbb170d8f92d214f5140d
+lk.img;AB
 mcupm.img;AB
 md1img.img;AB
 pi_img.img;AB
-preloader_emerald.bin:preloader_raw.img;AB|e86f2b23abd36ce050d70b1e6eb553dc073712c5
+preloader_emerald.bin:preloader_raw.img;AB
 scp.img;AB
 spmfw.img;AB
 sspm.img;AB

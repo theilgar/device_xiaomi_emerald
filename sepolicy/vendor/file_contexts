@@ -72,7 +72,7 @@
 
 # Dolby
 /data/vendor/dolby(/.*)?                                                  u:object_r:vendor_dolby_file:s0
-/(vendor|system/vendor)/bin/hw/vendor\.dolby\.hardware\.dms@2\.0-service  u:object_r:hal_dms_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.dolby\.dms\.service                u:object_r:hal_dms_default_exec:s0
 
 # Fingerprint
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.xiaomi u:object_r:hal_fingerprint_default_exec:s0
@@ -82,11 +82,14 @@
 /data/vendor/goodix(/.*)? u:object_r:fingerprint_vendor_data_file:s0
 /mnt/vendor/persist/goodix(/.*)? u:object_r:fingerprint_vendor_data_file:s0
 
-# Keymint
-/(vendor|system/vendor)/bin/hw/android.hardware.security.keymint@1.0-service.mitee                     u:object_r:hal_keymint_default_exec:s0
+# GNSS
+/(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.gnss-service                              u:object_r:hal_gnss_default_exec:s0
 
-# Power
-/(vendor|system/vendor)/bin/hw/android\.hardware\.power-service\.pixel-libperfmgr u:object_r:hal_power_default_exec:s0
+# Graphics
+/(vendor|system/vendor)/bin/hw/android\.hardware\.graphics\.composer@3\.4-service                     u:object_r:hal_graphics_composer_default_exec:s0
+
+# MMS
+/(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.mms-service                                u:object_r:mtk_hal_mms_exec:s0
 
 # Sensor
 /vendor/bin/hw/android\.hardware\.sensors-service\.xiaomi-multihal                                     u:object_r:hal_sensors_default_exec:s0
@@ -104,3 +107,12 @@
 
 # Process and system statistics files
 /proc/stat                                                                                                                                                u:object_r:proc_stat:s0
+
+# Camera (CCU)
+/dev/ccu(/.*)?                                                            u:object_r:ccu_device:s0
+
+# SAR
+/(vendor|system/vendor)/bin/sns_sensors_test_and_cal                      u:object_r:sardiag_exec:s0
+
+# Wi-Fi
+/(vendor|system/vendor)/bin/iwpriv                                        u:object_r:iwpriv_exec:s0

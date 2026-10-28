@@ -8,11 +8,13 @@ persist.audio.button_jack.profile=volume
 persist.audio.button_jack.switch=0
 ro.audio.monitorRotation=true
 ro.vendor.audio.device.dbcom=dolby_common
+ro.vendor.audio.device.db=DB_XM
 ro.vendor.audio.dolby.dax.support=true
 ro.vendor.audio.feature.customizedsound=true
 ro.vendor.audio.fweffect=true
+ro.vendor.audio.odmvolume=true
 ro.vendor.audio.game.effect=true
-ro.vendor.audio_para_version=O7-AudioParam-global-V10-20241026
+ro.vendor.audio_para_version=N6-Audiopara-V02-20251127
 ro.vendor.audio.scenario.support=true
 ro.vendor.audio.soundfx.type=mi
 ro.vendor.audio.soundfx.usb=true
@@ -23,6 +25,7 @@ ro.vendor.audio.us.proximity_waitfornegative_feature=true
 ro.vendor.audio.vocal.support=true
 ro.vendor.audio.voice.change.support=true
 ro.vendor.audio.voice.change.version=1
+ro.vendor.audio.voice.volume.boost=manual
 ro.vendor.mtk_audio_alac_support=1
 ro.vendor.mtk_audio_ape_support=1
 ro.vendor.mtk_audio_tuning_tool_ver=V1
@@ -80,7 +83,7 @@ ro.crypto.volume.filenames_mode=aes-256-cts
 
 # Dolby
 ro.vendor.audio.device.dbcom=dolby_common
-ro.vendor.dolby.dax.version=DAX3_3.6.0.12_r1
+ro.vendor.dolby.dax.version=DAX3_3.13.0.9_r1
 ro.vendor.audio.dolby.dax.support=true
 
 # DRM
@@ -182,6 +185,9 @@ vendor.powerhal.interaction.min=50
 vendor.powerhal.interaction.max=150
 
 # PQ
+ro.vendor.mtk_pq_color_mode=1
+ro.vendor.mtk_pq_support=2
+sys.displayfeature_hidl=false
 ro.vendor.pq.mtk_aal_support=1
 ro.vendor.pq.mtk_ai_scence_pq_support=0
 ro.vendor.pq.mtk_ai_sdr_to_hdr_support=0
