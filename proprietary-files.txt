@@ -1979,7 +1979,6 @@ vendor/lib64/android.hardware.power-service-mediatek.so
 vendor/lib64/libMiPhotoFilter.so
 vendor/lib64/libaaa_flickerutil.so
 vendor/lib64/libaal_sec.so
-vendor/lib64/libalsautilsv2.so
 vendor/lib64/libaudio_aidl_conversion_common_ndk.so
 vendor/lib64/libaudioaidlcommon.so
 vendor/lib64/libbluetooth_audio_session_aidl_mtk.so
