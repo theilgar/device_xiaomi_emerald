@@ -1,5 +1,5 @@
 on early-init
-    write /proc/sys/kernel/sched_pelt_multiplier 1
+    write /proc/sys/kernel/sched_pelt_multiplier 4
 
 on init
     write /dev/cpuset/foreground/cpus 0-5
