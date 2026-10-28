@@ -1748,7 +1748,6 @@ vendor/lib64/libnxp_extamp_intf.so
 vendor/libnfc-nxp_RF.conf
 vendor/etc/init/nfc2-service-nxp.rc
 vendor/etc/init/init.miodm_emerald.nfc.rc
-vendor/etc/vintf/manifest/nfc2-service-nxp.xml
 
 # NVRAM
 vendor/bin/nvram_daemon
