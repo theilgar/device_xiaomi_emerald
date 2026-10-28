@@ -38,6 +38,7 @@ AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
     boot \
     vendor_boot \
+    dtbo \
     system \
     system_ext \
     vendor \
@@ -194,8 +195,9 @@ PRODUCT_PACKAGES += \
     android.hardware.light-service.lineage
 
 # MediaCas
-PRODUCT_PACKAGES += \
-    android.hardware.cas@1.2-service-lazy
+TARGET_REQUIRES_HIDL_CAS_HAL := false
+PRODUCT_PACKAGES := $(filter-out android.hardware.cas@1.2-service android.hardware.cas@1.2-service-lazy,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES_SHIPPING_API_LEVEL_33 := $(filter-out android.hardware.cas@1.2-service,$(PRODUCT_PACKAGES_SHIPPING_API_LEVEL_33))
 
 # Media (C2)
 PRODUCT_PACKAGES += \
