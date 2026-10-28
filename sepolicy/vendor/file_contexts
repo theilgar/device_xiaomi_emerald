@@ -108,9 +108,6 @@
 # Process and system statistics files
 /proc/stat                                                                                                                                                u:object_r:proc_stat:s0
 
-# Camera (CCU)
-/dev/ccu(/.*)?                                                            u:object_r:ccu_device:s0
-
 # SAR
 /(vendor|system/vendor)/bin/sns_sensors_test_and_cal                      u:object_r:sardiag_exec:s0
 
