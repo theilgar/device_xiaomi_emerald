@@ -150,6 +150,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator-V2-ndk.vendor \
     android.hardware.graphics.common-V5-ndk.vendor \
     android.hardware.graphics.common-V6-ndk.vendor \
+    android.hardware.graphics.common-V7-ndk.vendor \
     android.hardware.graphics.composer3-V4-ndk.vendor \
     android.hardware.drm.common-V1-ndk.vendor \
     android.hardware.memtrack-service.mediatek \
