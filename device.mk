@@ -104,6 +104,7 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-V4-ndk.vendor \
     android.hardware.bluetooth.audio-V5-ndk.vendor \
     android.hardware.soundtrigger3-V3-ndk.vendor \
+    android.media.audio.common.types-V5-ndk.vendor \
     android.media.audio.common.types-V4-ndk.vendor \
     android.media.audio.common.types-V3-ndk.vendor \
     android.media.audio.eraser.types-V1-ndk.vendor \
