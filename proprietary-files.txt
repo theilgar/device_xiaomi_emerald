@@ -2002,7 +2002,6 @@ vendor/lib64/libpqxmlflagparser.so
 vendor/lib64/libpqxmlparser.so
 vendor/lib64/libsdrparser.so
 vendor/lib64/libsilkybrightnesscore.so
-vendor/lib64/libtinyalsav2.so
 vendor/lib64/mt6789/libmtk_mali_user.so
 vendor/lib64/mt6789/libmtkcam.debugwrapper.so
 vendor/lib64/mt6789/libmtkcam_hal_aidl_common.so
