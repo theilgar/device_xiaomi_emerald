@@ -86,6 +86,11 @@ TARGET_RO_FILE_SYSTEM_TYPE := erofs
 PRODUCT_VENDOR_PROPERTIES += ro.virtual_ab.compression.threads=true
 endif
 
+# OS3 LK does not load the boot image ramdisk, so first stage needs
+# snapuserd from the vendor ramdisk.
+PRODUCT_PACKAGES += \
+    snapuserd.vendor_ramdisk
+
 # Audio
 TARGET_EXCLUDES_AUDIOFX := true
 $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)

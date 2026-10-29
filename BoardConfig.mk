@@ -53,13 +53,9 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 
 BOARD_BOOTCONFIG := \
-    androidboot.serialconsole=0 \
-    androidboot.boot_devices=bootdevice,11230000.mmc,soc/11230000.mmc,11270000.ufshci,soc/11270000.ufshci \
     kernel.rcu_nocbs=all \
     kernel.rcutree.enable_rcu_lazy=1 \
-    kernel.rcupdate.rcu_cpu_stall_cputime=1 \
-    restrict_cma_redirect \
-    android_arch_task_struct_size=512
+    kernel.rcupdate.rcu_cpu_stall_cputime=1
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_KERNEL_CMDLINE += rcupdate.rcu_expedited=1
@@ -151,7 +147,6 @@ TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 
 # Recovery
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.mt6789
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TARGET_USERIMAGES_USE_F2FS := true
