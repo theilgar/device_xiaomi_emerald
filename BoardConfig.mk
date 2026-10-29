@@ -147,6 +147,16 @@ TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 
 # Recovery
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
+
+# OS3 LK ignores the boot image ramdisk, loads only the platform fragment in
+# normal mode and only boots recovery if a recovery fragment exists. Like
+# stock, keep the whole root (recovery included) in the platform fragment and
+# add a stub recovery fragment. It has to be called "dlkm" because soong fsgen
+# rejects any other fragment name; LK picks it by its RECOVERY type.
+BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
+BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.PREBUILT := $(DEVICE_PATH)/prebuilt/recovery_fragment.cpio.lz4
+BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.MKBOOTIMG_ARGS := --ramdisk_type RECOVERY
+
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.mt6789
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TARGET_USERIMAGES_USE_F2FS := true
