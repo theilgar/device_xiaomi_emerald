@@ -1,21 +1,26 @@
 //
-// Copyright (C) 2022 The LineageOS Project
-//
+// SPDX-FileCopyrightText: The LineageOS Project
 // SPDX-License-Identifier: Apache-2.0
 //
 
-cc_library {
-    name: "libudfpshandler",
-    vendor: true,
-    srcs: ["UdfpsHandler.cpp"],
-    compile_multilib: "64",
-    shared_libs: [
-        "libbase",
-    ],
-    static_libs: [
-        "android.hardware.biometrics.fingerprint-V4-ndk",
-    ],
-    header_libs: [
-        "//hardware/xiaomi:xiaomifingerprint_headers",
-    ],
+// Feeds the stock fingerprint HAL the FOD touch mode and the scanner state (see UdfpsApp.java).
+// Platform-signed so it runs as platform_app, which the stock vendor policy lets call both services.
+android_app {
+    name: "EmeraldUdfps",
+    srcs: ["src/**/*.java"],
+    certificate: "platform",
+    platform_apis: true,
+    privileged: true,
+    system_ext_specific: true,
+    optimize: {
+        enabled: false,
+    },
+    required: ["privapp-permissions-org.lineageos.emerald.udfps.xml"],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-org.lineageos.emerald.udfps.xml",
+    src: "privapp-permissions-org.lineageos.emerald.udfps.xml",
+    sub_dir: "permissions",
+    system_ext_specific: true,
 }

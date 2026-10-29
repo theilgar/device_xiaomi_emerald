@@ -1445,9 +1445,7 @@ vendor/lib64/soundfx/libswdapaidl.so
 
 # EngineerMode
 system_ext/app/EngineerMode/EngineerMode.apk
-system_ext/lib64/libaudiotoolkit.so;DISABLE_CHECKELF
 system_ext/lib64/libem_aoltest_jni.so;DISABLE_CHECKELF
-system_ext/lib64/libem_audio_jni.so;DISABLE_CHECKELF
 system_ext/lib64/libem_bleoffload_jni.so;DISABLE_CHECKELF
 system_ext/lib64/libem_support_jni.so;DISABLE_CHECKELF
 system_ext/lib64/libem_wifi_jni.so;DISABLE_CHECKELF
@@ -1866,7 +1864,6 @@ vendor/etc/virtual-spn-conf-by-efspn.xml
 vendor/etc/virtual-spn-conf-by-imsi.xml
 
 # Radio (IMS)
-vendor/bin/hw/vtservice_aidl
 vendor/bin/volte_imcb
 vendor/bin/volte_imsm_93
 vendor/bin/volte_md_status
@@ -1877,7 +1874,6 @@ vendor/etc/init/init.volte_imsm_93.rc
 vendor/etc/init/init.volte_md_status.rc
 vendor/etc/init/init.volte_stack.rc
 vendor/etc/init/init.volte_ua.rc
-vendor/etc/init/init.vtservice_aidl.rc
 vendor/lib64/hw/vendor.mediatek.hardware.videotelephony-impl.so
 vendor/lib64/vendor.mediatek.hardware.videotelephony-V1-ndk.so
 vendor/etc/ipsec/ipsec.conf

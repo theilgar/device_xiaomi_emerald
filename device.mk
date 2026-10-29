@@ -462,3 +462,59 @@ PRODUCT_COPY_FILES += \
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/emerald/emerald-vendor.mk)
+
+# ==============================================================================
+# RamDll Clean-2 Phase 7 Integration Settings
+# ==============================================================================
+
+# 1. SurfaceFlinger Vulkan RenderEngine (reduces shade drop/jank on Mali-G57)
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.renderengine.backend=skiavkthreaded
+
+# 2. Dynamic refresh rate overlays & vendor property overrides
+PRODUCT_PACKAGES += \
+    SettingsResOverlayEmerald
+
+PRODUCT_VENDOR_PROPERTIES += \
+    debug.sf.set_idle_timer_ms=1100 \
+    debug.sf.set_touch_timer_ms=1100
+
+# 3. Kernel tuning init script (FPSGO, page-cluster 0)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init/emerald_tuning.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/emerald_tuning.rc
+
+# 4. Touchscreen DT2W & Goodix keylayout
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/keylayout/goodix_ts.kl:$(TARGET_COPY_OUT_PRODUCT)/usr/keylayout/goodix_ts.kl
+
+PRODUCT_PACKAGES += \
+    emerald_dt2w
+
+# 5. UDFPS Java Bridge App (screen-off wake & FOD touch mode)
+PRODUCT_PACKAGES += \
+    EmeraldUdfps
+
+# 6. LineageOS Charging Control Service
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
+
+# 7. Drop broken vtservice & disable ViLTE/ViWiFi to prevent IMS deadlock
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.vendor.vilte_support=0 \
+    persist.vendor.viwifi_support=0
+
+# 8. Open-source AIDL V4 audio parameter parser service
+PRODUCT_PACKAGES += \
+    android.hardware.audio.parameter_parser.service
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.audio.ihaladaptervendorextension_enabled=true \
+    ro.audio.simulate_device_connections=primary
+
+# 9. XiaomiDolby from AOSPA (overrides AudioFX & MusicFX)
+PRODUCT_PACKAGES += \
+    XiaomiDolby
+
+# 10. OTA Updater URI for GitHub releases
+PRODUCT_PRODUCT_PROPERTIES += \
+    lineage.updater.uri=https://raw.githubusercontent.com/RamDll/emerald-ota/main/emerald/{incr}.json
