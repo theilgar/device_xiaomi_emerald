@@ -8,3 +8,6 @@ remote_provisioning.hostname=remoteprovisioning.googleapis.com
 # Netflix
 ro.netflix.channel=004ee050-1a17-11e9-bb61-6f1da27fb55b
 ro.netflix.signup=1
+
+# Background Blurs
+ro.surface_flinger.supports_background_blur=1

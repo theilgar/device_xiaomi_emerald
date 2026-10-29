@@ -469,7 +469,8 @@ $(call inherit-product, vendor/xiaomi/emerald/emerald-vendor.mk)
 
 # 1. SurfaceFlinger Vulkan RenderEngine (reduces shade drop/jank on Mali-G57)
 PRODUCT_PRODUCT_PROPERTIES += \
-    debug.renderengine.backend=skiavkthreaded
+    debug.renderengine.backend=skiavkthreaded \
+    ro.surface_flinger.supports_background_blur=1
 
 # 2. Dynamic refresh rate overlays & vendor property overrides
 PRODUCT_PACKAGES += \
