@@ -498,7 +498,6 @@ PRODUCT_PACKAGES += \
 
 # 7. Drop broken vtservice & disable ViLTE/ViWiFi to prevent IMS deadlock
 PRODUCT_PRODUCT_PROPERTIES += \
-    persist.vendor.vilte_support=0 \
     persist.vendor.viwifi_support=0
 
 # 8. Open-source AIDL V4 audio parameter parser service
