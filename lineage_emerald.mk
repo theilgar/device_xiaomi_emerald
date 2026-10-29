@@ -7,6 +7,10 @@
 # CAS HAL: Eradicate deprecated HIDL CAS for FCM 202504
 TARGET_REQUIRES_HIDL_CAS_HAL := false
 
+# Enable GMS / Google Apps
+WITH_GMS := true
+$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
