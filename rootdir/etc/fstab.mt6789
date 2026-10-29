@@ -14,9 +14,12 @@ vendor_dlkm /vendor_dlkm erofs ro wait,slotselect,avb=vbmeta_vendor,logical,firs
 system_dlkm /system_dlkm erofs ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount
 
 # 183 "vendor/mediatek/proprietary/hardware/fstab/mt6789/fstab.in.mt6789"
+/dev/block/by-name/metadata /metadata f2fs noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
 /dev/block/by-name/metadata /metadata ext4 noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
 
 /dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,gc_merge,inlinecrypt wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
+
+/dev/block/by-name/rescue /cache ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check,formattable
 
 /dev/block/by-name/protect1 /mnt/vendor/protect_f ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
 /dev/block/by-name/protect2 /mnt/vendor/protect_s ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
@@ -94,7 +97,7 @@ system_dlkm /system_dlkm erofs ro wait,slotselect,avb=vbmeta_system,logical,firs
 /dev/block/by-name/vcp /vcp emmc defaults defaults
 /dev/block/by-name/gpueb /gpueb emmc defaults defaults
 /dev/block/by-name/mcf_ota /mcf_ota emmc defaults defaults
-/dev/block/by-name/vendor_boot /vendor_boot emmc defaults defaults
+/dev/block/by-name/vendor_boot /vendor_boot emmc defaults first_stage_mount,nofail,slotselect
 /dev/block/by-name/mvpu_algo1 /mvpu_algo1 emmc defaults defaults
 /dev/block/by-name/mvpu_algo2 /mvpu_algo2 emmc defaults defaults
 /dev/block/by-name/apusys1 /apusys1 emmc defaults defaults
@@ -105,7 +108,7 @@ system_dlkm /system_dlkm erofs ro wait,slotselect,avb=vbmeta_system,logical,firs
 /dev/block/by-name/pi_img /pi_img emmc defaults defaults
 /dev/block/by-name/boot_para /boot_para emmc defaults defaults
 /dev/block/by-name/odmdtbo /odmdtbo emmc defaults defaults
-/dev/block/by-name/dtbo /dtbo emmc defaults defaults
+/dev/block/by-name/dtbo /dtbo emmc defaults first_stage_mount,nofail,slotselect
 
 /dev/block/by-name/otp /otp emmc defaults defaults
 

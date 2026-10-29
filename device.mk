@@ -380,10 +380,17 @@ PRODUCT_PACKAGES += \
     init.project.rc \
     init.sensor_2_0.rc \
     init.batterysecret.rc \
+    init.recovery.mt6789.rc \
     init.recovery.usb.rc \
     fstab.mt6789 \
     fstab.mt6789.vendor_ramdisk \
+    fstab.emmc \
+    fstab.emmc.vendor_ramdisk \
     ueventd.mt6789.rc
+
+PRODUCT_COPY_FILES += \
+    device/xiaomi/emerald/rootdir/etc/init.recovery.mt6789.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6789.rc \
+    device/xiaomi/emerald/rootdir/etc/fstab.emmc:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.emmc
 
 # GNSS
 PRODUCT_COPY_FILES += \
