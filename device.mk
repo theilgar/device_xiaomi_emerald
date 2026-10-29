@@ -174,7 +174,6 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint-service.xiaomi \
-    libudfpshandler \
     sensors.xiaomi.v2:64
 
 PRODUCT_COPY_FILES += \
@@ -275,7 +274,6 @@ PRODUCT_PACKAGES += \
     libmtkperf_client
 
 PRODUCT_PACKAGES += \
-    DT2W-Service-MT6789
 
 # Radio
 PRODUCT_PACKAGES += \
