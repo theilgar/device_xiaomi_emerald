@@ -80,9 +80,12 @@ public class UdfpsApp extends Application {
     }
 
     private void setup() {
-        // Both HALs start before the framework; wait for them anyway, it costs nothing.
-        ServiceManager.waitForService(TOUCH_SERVICE);
-        ServiceManager.waitForService(FP_SERVICE);
+        if (ServiceManager.checkService(TOUCH_SERVICE) == null) {
+            Log.w(TAG, TOUCH_SERVICE + " not available, continuing");
+        }
+        if (ServiceManager.checkService(FP_SERVICE) == null) {
+            Log.w(TAG, FP_SERVICE + " not available, continuing");
+        }
         setFodMode();
 
         FingerprintManager fpm = getSystemService(FingerprintManager.class);

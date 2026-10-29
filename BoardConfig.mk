@@ -58,6 +58,7 @@ BOARD_BOOTCONFIG := \
     kernel.rcupdate.rcu_cpu_stall_cputime=1
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
+BOARD_KERNEL_CMDLINE += ramdisk_size=131072
 BOARD_KERNEL_CMDLINE += rcupdate.rcu_expedited=1
 BOARD_KERNEL_CMDLINE += log_buf_len=1024K
 BOARD_KERNEL_CMDLINE += sysctl.kernel.sched_pelt_multiplier=4
@@ -98,9 +99,6 @@ TARGET_USES_VULKAN := true
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load.vendor_ramdisk))
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load.recovery))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules_ramdisk/*.ko)
-BOARD_RECOVERY_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules_ramdisk/*.ko)
-BOARD_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load.recovery))
-BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load.recovery))
 
 # Vendor modules (installed to vendor_dlkm)
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load))
