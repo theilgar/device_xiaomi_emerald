@@ -1,1 +1,8 @@
 dontaudit untrusted_app ashmem_device:chr_file open;
+
+# Known-benign denials that vendor policy may not allow; hide them, grant nothing.
+dontaudit rild default_prop:file read;
+dontaudit nfc nfc_data_vendor_file:dir search;
+dontaudit mtk_hal_camera default_prop:property_service set;
+dontaudit mtk_hal_camera bootloader_prop:property_service set;
+

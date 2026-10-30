@@ -547,8 +547,8 @@
          fp screen off unlock-->
     <bool name="config_screen_off_udfps_default_on">true</bool>
 
-    <!-- Whether to cleanup fingerprints upon connection to the daemon and when user switches -->
-    <bool name="config_cleanupUnusedFingerprints">false</bool>
+    <!-- The package name of the device configurator -->
+    <string name="config_deviceConfiguratorPackageName" translatable="false">com.google.android.gms</string>
 
     <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
     <bool name="config_zramWriteback">true</bool>
