@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest version="9.0" type="device" target-level="202504">
     <hal format="aidl">
+        <name>android.hardware.power</name>
+        <version>6</version>
+        <fqname>IPower/default</fqname>
+    </hal>
+    <hal format="aidl">
         <name>android.hardware.radio.config</name>
         <version>4</version>
         <fqname>IRadioConfig/default</fqname>

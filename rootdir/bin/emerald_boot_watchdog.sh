@@ -12,9 +12,9 @@ log_kmsg() {
     echo "<4>${TAG}: $1" > /dev/kmsg 2>/dev/null
 }
 
-log_kmsg "Boot watchdog started. Waiting up to 300 seconds for boot completion..."
+log_kmsg "Boot watchdog started. Waiting up to 900 seconds for boot completion..."
 
-TIMEOUT=300
+TIMEOUT=900
 INTERVAL=5
 ELAPSED=0
 
