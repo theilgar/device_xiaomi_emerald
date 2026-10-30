@@ -49,9 +49,6 @@ ro.mtk_perf_simple_start_win=1
 ro.mtk_perf_fast_start_win=1
 ro.mtk_perf_response_time=1
 
-# Identity
-Build.BRAND=MTK
-
 # Disable iorapd
 ro.iorapd.enable=false
 
@@ -61,4 +58,10 @@ ro.property_service.async_persist_writes=true
 # Early ADB debugging & logging
 persist.sys.usb.config=adb
 persist.service.adb.enable=1
+
+# Log spam suppression
+log.tag.HfLooper=W
+log.tag.hwcomposer=W
+log.tag.libsensor-displayalgo=W
+
 

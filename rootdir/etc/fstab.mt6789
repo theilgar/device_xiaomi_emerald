@@ -16,7 +16,7 @@ system_dlkm /system_dlkm erofs ro wait,slotselect,avb=vbmeta_system,logical,firs
 # 183 "vendor/mediatek/proprietary/hardware/fstab/mt6789/fstab.in.mt6789"
 /dev/block/by-name/metadata /metadata ext4 noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
 
-/dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,gc_merge,inlinecrypt wait,check,formattable,quota,latemount,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
+/dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,gc_merge,inlinecrypt wait,check,formattable,quota,latemount,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity,sysfs_path=/sys/devices/platform/soc/11270000.ufshci
 
 /dev/block/by-name/rescue /cache ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check,formattable
 

@@ -124,8 +124,7 @@ PRODUCT_PACKAGES += \
     libdynproc
 
 PRODUCT_PACKAGES += \
-    MtkInCallService \
-    XiaomiDolby
+    MtkInCallService
 
 # Audio Configuration
 PRODUCT_COPY_FILES += \
@@ -414,11 +413,12 @@ PRODUCT_PACKAGES += \
     MiuiCameraOverlayIcon
 
 # Overlays
-PRODUCT_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_PACKAGES += \
     ApertureOverlayEmerald \
     FrameworksResOverlayEmerald \
+    LineageResXiaomi \
     SettingsResOverlayEmerald \
     SystemUIOverlayEmerald \
     TetheringResOverlayEmerald \
@@ -474,10 +474,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     debug.renderengine.backend=skiavkthreaded \
     ro.surface_flinger.supports_background_blur=1
 
-# 2. Dynamic refresh rate overlays & vendor property overrides
-PRODUCT_PACKAGES += \
-    SettingsResOverlayEmerald
-
+# 2. Dynamic refresh rate vendor property overrides
 PRODUCT_VENDOR_PROPERTIES += \
     debug.sf.set_idle_timer_ms=1100 \
     debug.sf.set_touch_timer_ms=1100
@@ -520,3 +517,14 @@ PRODUCT_PACKAGES += \
 # 10. OTA Updater URI for GitHub releases
 PRODUCT_PRODUCT_PROPERTIES += \
     lineage.updater.uri=https://raw.githubusercontent.com/RamDll/emerald-ota/main/emerald/{incr}.json
+
+# Health HAL & Battery State of Health
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.health.state_of_health_path=/sys/class/power_supply/bms/soh \
+    persist.vendor.debug.collision.disable=true
+
+# High-Frequency Logger Quieting
+PRODUCT_PRODUCT_PROPERTIES += \
+    log.tag.HfLooper=W \
+    log.tag.hwcomposer=W \
+    log.tag.libsensor-displayalgo=W

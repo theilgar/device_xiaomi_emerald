@@ -113,7 +113,7 @@ on init
 
     # Top app tasks
     write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
-    write /dev/cpuctl/foreground/cpu.uclamp.min 0
+    write /dev/cpuctl/top-app/cpu.uclamp.min 0
     write /dev/cpuctl/top-app/cpu.uclamp.max max
     write /dev/cpuctl/top-app/cpu.shares 20480
 
@@ -135,6 +135,9 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpufreq/policy6/scaling_governor "schedutil"
     write /sys/devices/platform/soc/112b0000.ufshci/clkgate_enable 1
+
+    # Set GPU governor to simple_ondemand
+    write /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/governor "simple_ondemand"
 
 on charger
     chmod 0664 /sys/class/Charging_Adapter/pd_adapter/usbpd_verifed

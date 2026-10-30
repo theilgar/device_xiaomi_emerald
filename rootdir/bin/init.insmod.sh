@@ -53,10 +53,12 @@ if [ -f $cfg_file ]; then
               continue
             fi
             case ${insmod_arg} in
-              "-b *" | "-b")
+              "-b *" | -b)
                 arg="-b $(cat ${modules_dir}/modules.load)" ;;
               "*" | "")
                 arg="$(cat ${modules_dir}/modules.load)" ;;
+              *)
+                arg="${insmod_arg}" ;;
             esac
             modprobe -a -d ${modules_dir} $arg
           done
