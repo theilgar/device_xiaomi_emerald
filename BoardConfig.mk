@@ -132,6 +132,11 @@ BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SYSTEM_DLKMIMAGE_PARTITION_SIZE := 134217728
 
+# Uncompressed (default is lz4hc): reading costs no decompression on this CPU.
+BOARD_PRODUCTIMAGE_EROFS_COMPRESSOR := none
+BOARD_SYSTEMIMAGE_EROFS_COMPRESSOR := none
+BOARD_SYSTEM_EXTIMAGE_EROFS_COMPRESSOR := none
+
 -include vendor/lineage/config/BoardConfigReservedSize.mk
 
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext

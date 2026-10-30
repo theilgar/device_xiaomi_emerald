@@ -12,7 +12,7 @@ WITH_GMS := true
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common Lineage stuff.
@@ -36,5 +36,5 @@ PRODUCT_MANUFACTURER_FOR_ATTESTATION := $(PRODUCT_MANUFACTURER)
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="missi-user 15 AP3A.240905.015.A2 OS2.0.208.0.VNFMIXM release-keys" \
-    BuildFingerprint=Redmi/emerald_global/emerald:15/AP3A.240905.015.A2/OS2.0.208.0.VNFMIXM:user/release-keys
+    BuildDesc="missi-user 16 BP2A.250605.031.A3 OS3.0.305.0.WNFMIXM release-keys" \
+    BuildFingerprint=Redmi/miodm_emerald/emerald:16/BP2A.250605.031.A3/OS3.0.305.0.WNFMIXM:user/release-keys
