@@ -133,3 +133,17 @@ prebuilt_etc {
     vendor: true,
 }
 
+sh_binary {
+    name: "emerald_boot_watchdog.sh",
+    src: "bin/emerald_boot_watchdog.sh",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "emerald_watchdog.rc",
+    src: "etc/init/emerald_watchdog.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+

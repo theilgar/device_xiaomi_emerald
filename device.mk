@@ -371,6 +371,8 @@ PRODUCT_COPY_FILES += \
 
 # Init scripts
 PRODUCT_PACKAGES += \
+    emerald_boot_watchdog.sh \
+    emerald_watchdog.rc \
     init.insmod.sh \
     init.insmod.mtk.cfg \
     init.connectivity.rc \

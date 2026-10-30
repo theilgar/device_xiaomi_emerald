@@ -57,3 +57,8 @@ ro.iorapd.enable=false
 
 # async property set
 ro.property_service.async_persist_writes=true
+
+# Early ADB debugging & logging
+persist.sys.usb.config=adb
+persist.service.adb.enable=1
+

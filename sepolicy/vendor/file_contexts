@@ -113,3 +113,7 @@
 
 # Wi-Fi
 /(vendor|system/vendor)/bin/iwpriv                                        u:object_r:iwpriv_exec:s0
+
+# Emerald Boot Watchdog
+/(vendor|system/vendor)/bin/emerald_boot_watchdog\.sh                     u:object_r:emerald_boot_watchdog_exec:s0
+

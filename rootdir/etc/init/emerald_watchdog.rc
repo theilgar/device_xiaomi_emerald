@@ -1,0 +1,20 @@
+#
+# Emerald 5-minute Boot Watchdog & Debug Service
+#
+
+on post-fs
+    # Start the 5-minute boot watchdog
+    start emerald_boot_watchdog
+
+    # Bring up ADB early during boot so logs can be inspected via USB
+    setprop persist.sys.usb.config adb
+    setprop sys.usb.config adb
+    start adbd
+
+service emerald_boot_watchdog /vendor/bin/emerald_boot_watchdog.sh
+    class late_start
+    user root
+    group root system
+    oneshot
+    disabled
+    seclabel u:r:emerald_boot_watchdog:s0

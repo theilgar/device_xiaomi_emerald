@@ -55,13 +55,19 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_BOOTCONFIG := \
     kernel.rcu_nocbs=all \
     kernel.rcutree.enable_rcu_lazy=1 \
-    kernel.rcupdate.rcu_cpu_stall_cputime=1
+    kernel.rcupdate.rcu_cpu_stall_cputime=1 \
+    kernel.panic=5 \
+    kernel.panic_on_oops=1 \
+    kernel.ramdisk_size=131072
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_KERNEL_CMDLINE += ramdisk_size=131072
+BOARD_KERNEL_CMDLINE += panic=5
+BOARD_KERNEL_CMDLINE += panic_on_oops=1
 BOARD_KERNEL_CMDLINE += rcupdate.rcu_expedited=1
 BOARD_KERNEL_CMDLINE += log_buf_len=1024K
 BOARD_KERNEL_CMDLINE += sysctl.kernel.sched_pelt_multiplier=4
+
 
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x3fff8000

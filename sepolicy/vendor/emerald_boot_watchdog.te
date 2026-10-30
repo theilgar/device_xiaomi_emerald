@@ -1,0 +1,16 @@
+type emerald_boot_watchdog, domain;
+type emerald_boot_watchdog_exec, exec_type, file_type, vendor_file_type;
+
+init_daemon_domain(emerald_boot_watchdog)
+
+allow emerald_boot_watchdog kmsg_device:chr_file rw_file_perms;
+allow emerald_boot_watchdog vendor_shell_exec:file rx_file_perms;
+allow emerald_boot_watchdog vendor_toolbox_exec:file rx_file_perms;
+allow emerald_boot_watchdog proc_sysrq:file rw_file_perms;
+
+set_prop(emerald_boot_watchdog, powerctl_prop)
+get_prop(emerald_boot_watchdog, boot_status_prop)
+
+userdebug_or_eng(`
+    permissive emerald_boot_watchdog;
+')
