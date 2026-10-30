@@ -1,1 +1,7 @@
 binder_call(mtk_hal_power, hal_power_default)
+
+# Enable AIDL Power HAL service registration
+hal_server_domain(mtk_hal_power, hal_power)
+binder_use(mtk_hal_power)
+allow mtk_hal_power hal_power_service:service_manager { add find };
+allow mtk_hal_power servicemanager:binder { call transfer };

@@ -55,7 +55,7 @@ on init
     # Boot time tuning
     write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "performance"
     write /sys/devices/system/cpu/cpufreq/policy6/scaling_governor "performance"
-    write /sys/devices/platform/soc/112b0000.ufshci/clkgate_enable 0
+    write /sys/devices/platform/soc/11270000.ufshci/clkgate_enable 0
 
     # Set teo as cpu idle governor
     write /sys/devices/system/cpu/cpuidle/current_governor teo
@@ -134,7 +134,7 @@ on property:sys.boot_completed=1
     # End boot time tuning
     write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpufreq/policy6/scaling_governor "schedutil"
-    write /sys/devices/platform/soc/112b0000.ufshci/clkgate_enable 1
+    write /sys/devices/platform/soc/11270000.ufshci/clkgate_enable 1
 
     # Set GPU governor to simple_ondemand
     write /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/governor "simple_ondemand"

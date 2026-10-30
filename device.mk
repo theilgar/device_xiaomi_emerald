@@ -469,10 +469,10 @@ $(call inherit-product, vendor/xiaomi/emerald/emerald-vendor.mk)
 # RamDll Clean-2 Phase 7 Integration Settings
 # ==============================================================================
 
-# 1. SurfaceFlinger Vulkan RenderEngine (reduces shade drop/jank on Mali-G57)
+# 1. SurfaceFlinger OpenGL RenderEngine (avoids Mali-G57 Vulkan threading deadlocks)
 PRODUCT_PRODUCT_PROPERTIES += \
-    debug.renderengine.backend=skiavkthreaded \
-    ro.surface_flinger.supports_background_blur=1
+    debug.renderengine.backend=skiagl \
+    ro.surface_flinger.supports_background_blur=0
 
 # 2. Dynamic refresh rate vendor property overrides
 PRODUCT_VENDOR_PROPERTIES += \
