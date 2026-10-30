@@ -55,18 +55,9 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_BOOTCONFIG := \
     kernel.rcu_nocbs=all \
     kernel.rcutree.enable_rcu_lazy=1 \
-    kernel.rcupdate.rcu_cpu_stall_cputime=1 \
-    kernel.panic=5 \
-    kernel.panic_on_oops=1 \
-    kernel.ramdisk_size=131072
+    kernel.rcupdate.rcu_cpu_stall_cputime=1
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
-BOARD_KERNEL_CMDLINE += ramdisk_size=131072
-BOARD_KERNEL_CMDLINE += panic=5
-BOARD_KERNEL_CMDLINE += panic_on_oops=1
-BOARD_KERNEL_CMDLINE += rcupdate.rcu_expedited=1
-BOARD_KERNEL_CMDLINE += log_buf_len=1024K
-BOARD_KERNEL_CMDLINE += sysctl.kernel.sched_pelt_multiplier=4
 
 
 BOARD_KERNEL_PAGESIZE := 4096
@@ -149,17 +140,9 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 
-# Recovery
+# Recovery (in vendor_boot; matching RamDll clean-2 / stock OS3 layout)
+BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-
-# OS3 LK ignores the boot image ramdisk, loads only the platform fragment in
-# normal mode and only boots recovery if a recovery fragment exists. Like
-# stock, keep the whole root (recovery included) in the platform fragment and
-# add a stub recovery fragment. It has to be called "dlkm" because soong fsgen
-# rejects any other fragment name; LK picks it by its RECOVERY type.
-BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
-BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.PREBUILT := $(DEVICE_PATH)/prebuilt/recovery_fragment.cpio.lz4
-BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.MKBOOTIMG_ARGS := --ramdisk_type RECOVERY
 
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.mt6789
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
