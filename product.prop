@@ -11,3 +11,7 @@ ro.netflix.signup=1
 
 # Background Blurs
 ro.surface_flinger.supports_background_blur=0
+
+# Honour app frame rate category votes on MRR panel
+debug.sf.frame_rate_category_mrr=1
+
