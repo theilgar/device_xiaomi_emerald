@@ -532,3 +532,11 @@ PRODUCT_PRODUCT_PROPERTIES += \
     log.tag.HfLooper=W \
     log.tag.hwcomposer=W \
     log.tag.libsensor-displayalgo=W
+
+# LiveDisplay AIDL Service (MediaTek PQ color pipeline)
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay-service.emerald
+
+# Stock Light HAL: 12-bit backlight path
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.miui.ui.version.code=1

@@ -1,2 +1,6 @@
 # Dolby
 hal_client_domain(system_server, hal_dms)
+
+# LightsService sends the 12-bit backlight level while ro.miui.ui.version.code is set
+get_prop(system_server, emerald_backlight_prop)
+
