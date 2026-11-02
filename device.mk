@@ -271,14 +271,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml
 
-# Power
+# Power & Charging
 PRODUCT_PACKAGES += \
     android.hardware.health-V1-ndk.vendor \
     android.hardware.power-V6-ndk.vendor \
+    vendor.mediatek.hardware.mtkpower@1.2-service.stub \
     libmtkperf_client_vendor \
-    libmtkperf_client
-
-PRODUCT_PACKAGES += \
+    libmtkperf_client \
+    batterysecret
 
 # Radio
 PRODUCT_PACKAGES += \
