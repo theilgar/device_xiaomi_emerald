@@ -44,9 +44,10 @@ vendor/lib64/libmtkshifter_vendor.so
 vendor/lib64/librt_extamp_intf.so
 vendor/lib64/libspeech_enh_lib.so;FIX_SONAME
 vendor/lib64/libspeechparser_vendor.so
-vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
+# Replaced by open-source hardware/mediatek/aidl/audio
+# vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
+# vendor/etc/init/android.hardware.audio.service-aidl.mediatek.rc
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
-vendor/etc/init/android.hardware.audio.service-aidl.mediatek.rc
 vendor/etc/vintf/manifest/android.hardware.audio.service-aidl.xml
 vendor/etc/vintf/manifest/android.hardware.audio.effect.service-aidl.xml
 vendor/lib64/android.hardware.audio.core-impl-mediatek.so

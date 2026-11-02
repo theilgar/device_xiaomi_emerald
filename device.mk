@@ -95,7 +95,9 @@ PRODUCT_PACKAGES += \
 TARGET_EXCLUDES_AUDIOFX := true
 $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
 $(call soong_config_set,android_hardware_audio,run_64bit,true)
+# Audio HAL (MediaTek AIDL source)
 PRODUCT_PACKAGES += \
+    android.hardware.audio.service.mediatek \
     audio.usb.default:64 \
     libaudioutils_shim
 
@@ -457,14 +459,9 @@ PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 PRODUCT_PACKAGES += \
     vndservicemanager
 
-# Vibrator
-$(call soong_config_set, vibrator, vibratortargets, vibratoraidlV2target)
-
+# Vibrator (MediaTek AIDL source)
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
-
-PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
+    android.hardware.vibrator-service.mediatek
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/emerald/emerald-vendor.mk)
