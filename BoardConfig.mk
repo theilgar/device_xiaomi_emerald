@@ -85,9 +85,9 @@ LOCAL_KERNEL := $(KERNEL_PATH)/$(BOARD_KERNEL_IMAGE_NAME)
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-# DTB
-BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
-BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtb
+# DTB and DTBO (built from source in device/xiaomi/emerald/dts)
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/dts/out/dtbo.img
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/dts/out/dtb
 
 # Graphics
 TARGET_USES_VULKAN := true
