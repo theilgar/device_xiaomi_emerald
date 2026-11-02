@@ -74,16 +74,20 @@ BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
 # Kernel
-# Kill lineage kernel build task while preserving kernel
-TARGET_NO_KERNEL_OVERRIDE := true
-
-# Workaround to make lineage's soong generator work
-TARGET_KERNEL_SOURCE := device/xiaomi/emerald-kernel/kernel-headers
-
-BOARD_KERNEL_IMAGE_NAME := Image.lz4
-LOCAL_KERNEL := $(KERNEL_PATH)/$(BOARD_KERNEL_IMAGE_NAME)
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+# Support compiling kernel from source (set TARGET_COMPILE_KERNEL_FROM_SOURCE := true)
+ifeq ($(TARGET_COMPILE_KERNEL_FROM_SOURCE),true)
+    TARGET_NO_KERNEL_OVERRIDE := false
+    TARGET_KERNEL_SOURCE ?= kernel/xiaomi/emerald
+    TARGET_KERNEL_CONFIG ?= gki_defconfig
+    BOARD_KERNEL_IMAGE_NAME := Image.lz4
+else
+    TARGET_NO_KERNEL_OVERRIDE := true
+    TARGET_KERNEL_SOURCE := device/xiaomi/emerald-kernel/kernel-headers
+    BOARD_KERNEL_IMAGE_NAME := Image.lz4
+    LOCAL_KERNEL := $(KERNEL_PATH)/$(BOARD_KERNEL_IMAGE_NAME)
+    PRODUCT_COPY_FILES += \
+        $(LOCAL_KERNEL):kernel
+endif
 
 # DTB and DTBO (built from source in device/xiaomi/emerald/dts)
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/dts/out/dtbo.img
