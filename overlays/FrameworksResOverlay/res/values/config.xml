@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<resources>
     <!-- Auto-brightness curve in nits (PhysicalMappingStrategy), from the old tree (5942839): the stock HyperOS
              levels (product AospFrameworkResOverlay: 100 lux ~90 nits, 500 lux ~120, 2000 lux ~280, HBM above ~6000 lux)
              re-sampled with a monotone interpolation in log(lux), largest step 1.85x between neighbouring points.
