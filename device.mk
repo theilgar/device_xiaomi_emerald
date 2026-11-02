@@ -20,7 +20,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/userspace_reboot.mk)
 $(call inherit-product-if-exists, packages/apps/ViPER4AndroidFX/config.mk)
 
 # Inherit common MediaTek IMS
-$(call inherit-product, vendor/mediatek/ims/ims.mk)
+$(call inherit-product-if-exists, vendor/mediatek/ims/ims.mk)
 
 # Bootanimation
 TARGET_SCREEN_HEIGHT := 1080

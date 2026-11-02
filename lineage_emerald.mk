@@ -36,5 +36,5 @@ PRODUCT_MANUFACTURER_FOR_ATTESTATION := $(PRODUCT_MANUFACTURER)
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="missi-user 16 BP2A.250605.031.A3 OS3.0.305.0.WNFMIXM release-keys" \
-    BuildFingerprint=Redmi/miodm_emerald/emerald:16/BP2A.250605.031.A3/OS3.0.305.0.WNFMIXM:user/release-keys
+    BuildDesc="missi-user 16 BP2A.250605.031.A3 OS3.0.307.0.WNFMIXM release-keys" \
+    BuildFingerprint=Redmi/miodm_emerald/emerald:16/BP2A.250605.031.A3/OS3.0.307.0.WNFMIXM:user/release-keys

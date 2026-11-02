@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <!-- Device Tree -->
+    <project name="theilgar/device_xiaomi_emerald" path="device/xiaomi/emerald" remote="github" revision="lineage-24.0" />
+
+    <!-- Prebuilt Kernel (Linux 6.12 GKI + genuine HyperOS 3 modules) -->
+    <project name="theilgar/device_xiaomi_emerald-kernel" path="device/xiaomi/emerald-kernel" remote="github" revision="lineage-24.0" />
+
+    <!-- Vendor Blobs (HyperOS 3 base) -->
+    <project name="theilgar/vendor_xiaomi_emerald" path="vendor/xiaomi/emerald" remote="github" revision="lineage-24.0" />
+
+    <!-- MediaTek Hardware HALs -->
+    <project name="theilgar/android_hardware_mediatek" path="hardware/mediatek" remote="github" revision="lineage-24.0" />
+
+    <!-- MediaTek Vendor SELinux Policies (Required for build) -->
+    <project name="LineageOS/android_device_mediatek_sepolicy_vndr" path="device/mediatek/sepolicy_vndr" remote="github" revision="lineage-24.0" />
+
+    <!-- MediaTek IMS (VoLTE / VoWiFi) -->
+    <project name="xiaomi-mediatek-devs/android_vendor_mediatek_ims" path="vendor/mediatek/ims" remote="github" revision="14" />
+</manifest>
