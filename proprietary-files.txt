@@ -1419,7 +1419,8 @@ vendor/etc/camera/xml/sceneDetection_front_iii.xml
 vendor/etc/camera/xml/xiaomiSceneDetection.xml
 
 # ConsumerIR
-vendor/lib64/hw/consumerir.common.so:vendor/lib64/hw/consumerir.mt6789.so;FIX_SONAME
+# Replaced by open-source device/xiaomi/emerald/consumerir
+# vendor/lib64/hw/consumerir.common.so:vendor/lib64/hw/consumerir.mt6789.so;FIX_SONAME
 
 # Display configs
 vendor/etc/cust_color_dsi_n6_41_02_0b_dsc_vdo.xml

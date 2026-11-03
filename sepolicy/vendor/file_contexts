@@ -123,3 +123,9 @@
 # Emerald Boot Watchdog
 /(vendor|system/vendor)/bin/emerald_boot_watchdog\.sh                     u:object_r:emerald_boot_watchdog_exec:s0
 
+# ConsumerIR
+/dev/lirc[0-9]*                                                           u:object_r:ir_device:s0
+/dev/irtx                                                                 u:object_r:ir_device:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.ir-service\.emerald     u:object_r:hal_ir_default_exec:s0
+
+
