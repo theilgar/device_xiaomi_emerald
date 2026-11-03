@@ -94,23 +94,12 @@ on property:sys.tp.grip_enable=90
 on property:sys.tp.grip_enable=270
     write /sys/devices/virtual/touch/touch_dev/touch_edge 2
 
-on init
-service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
-    class late_start
-    disabled
 
 on property:vendor.sysctl.tx=0
     exec /vendor/bin/iwpriv wlan0 driver "SET_PWR_CTRL MySar 2"
 on property:vendor.sysctl.tx=1
     exec /vendor/bin/iwpriv wlan0 driver "SET_PWR_CTRL MySar 1"
 
-service sarcalibration /vendor/bin/sns_sensors_test_and_cal -c 57,3,50000000,0
-    class main
-    user root
-    disabled
-    oneshot
-    group root system
-    seclabel u:r:sardiag:s0
 
 # displayfeature
 on boot

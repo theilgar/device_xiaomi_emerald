@@ -417,10 +417,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
 
-# MiuiCamera
-$(call inherit-product-if-exists, device/xiaomi/emerald-miuicamera/device.mk)
+# MiuiCamera (only included when proprietary camera port repo is present)
+ifneq ($(wildcard device/xiaomi/emerald-miuicamera/device.mk),)
+$(call inherit-product, device/xiaomi/emerald-miuicamera/device.mk)
 PRODUCT_PACKAGES += \
     MiuiCameraOverlayIcon
+endif
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage

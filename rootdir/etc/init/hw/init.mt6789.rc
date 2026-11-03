@@ -63,7 +63,6 @@ on charger
     #start fuelgauged_nvram
 
     chown system system /sys/class/leds/lcd-backlight/brightness
-    start mi_thermald
 
 on early-fs
     write /proc/bootprof "INIT:early-fs"
@@ -492,7 +491,6 @@ on post-fs-data
     mkdir /data/vendor/thermal/ 0775 system system
     mkdir /data/vendor/thermal 0771 root system
     mkdir /data/vendor/thermal/config 0771 root system
-    start mi_thermald
     chown system system /sys/class/thermal/thermal_message/sconfig
     chown system system /sys/class/thermal/thermal_message/gpufreq_limit
     chmod 0666 sys/class/thermal/thermal_message/flash_state
@@ -661,10 +659,6 @@ on property:ro.boot.crash_reason=*
   setprop vendor.minidump.crash_reason ${ro.boot.crash_reason}
 # O6 code for HQ-392308 by p-liwenke at 2024/07/15 end
 
-service mi_thermald /system/vendor/bin/mi_thermald
-    class main
-    user root
-    group system
 
 
 on property:ro.vendor.oem.sno=*
