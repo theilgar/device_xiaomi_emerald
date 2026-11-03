@@ -22,5 +22,5 @@
     <project name="LineageOS/android_device_mediatek_sepolicy_vndr" path="device/mediatek/sepolicy_vndr" remote="github" revision="lineage-24.0" />
 
     <!-- MediaTek IMS (VoLTE / VoWiFi) -->
-    <project name="xiaomi-mediatek-devs/android_vendor_mediatek_ims" path="vendor/mediatek/ims" remote="github" revision="14" />
+    <project name="xiaomi-mediatek-devs/android_vendor_mediatek_ims" path="vendor/mediatek/ims" remote="github" revision="android-16" />
 </manifest>

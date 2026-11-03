@@ -15,3 +15,11 @@ ro.surface_flinger.supports_background_blur=0
 # Honour app frame rate category votes on MRR panel
 debug.sf.frame_rate_category_mrr=1
 
+# VoLTE & VoWiFi (IMS)
+persist.dbg.volte_avail_ovr=1
+persist.dbg.vt_avail_ovr=1
+persist.dbg.wfc_avail_ovr=1
+persist.vendor.vilte_support=0
+persist.vendor.ims_support=1
+persist.vendor.volte_support=1
+
