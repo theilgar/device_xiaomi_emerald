@@ -274,11 +274,15 @@ PRODUCT_COPY_FILES += \
 # Power & Charging
 PRODUCT_PACKAGES += \
     android.hardware.health-V1-ndk.vendor \
+    android.hardware.power-service.lineage-libperfmgr \
     android.hardware.power-V6-ndk.vendor \
     vendor.mediatek.hardware.mtkpower@1.2-service.stub \
     libmtkperf_client_vendor \
     libmtkperf_client \
     batterysecret
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Radio
 PRODUCT_PACKAGES += \

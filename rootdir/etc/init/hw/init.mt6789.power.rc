@@ -139,6 +139,45 @@ on property:sys.boot_completed=1
     # Set GPU governor to simple_ondemand
     write /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/governor "simple_ondemand"
 
+    # PowerHAL / power-libperfmgr permissions
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq
+    chown system system /sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq
+
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
+    chown system system /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq
+
+    chown system system /dev/cpu_dma_latency
+    chmod 0664 /dev/cpu_dma_latency
+
+    chown system system /sys/devices/platform/soc/10012000.dvfsrc/mtk-dvfsrc-devfreq/devfreq/mtk-dvfsrc-devfreq/userspace/set_freq
+    chmod 0664 /sys/devices/platform/soc/10012000.dvfsrc/mtk-dvfsrc-devfreq/devfreq/mtk-dvfsrc-devfreq/userspace/set_freq
+
+    chown system system /proc/gpufreqv2/fix_target_opp_index
+    chmod 0664 /proc/gpufreqv2/fix_target_opp_index
+
+    chown system system /sys/kernel/ged/hal/custom_boost_gpu_freq
+    chmod 0664 /sys/kernel/ged/hal/custom_boost_gpu_freq
+
+    chown system system /sys/devices/virtual/thermal/thermal_message/sconfig
+    chmod 0664 /sys/devices/virtual/thermal/thermal_message/sconfig
+
+    chown system system /dev/cpuset/restricted/cpus
+    chmod 0664 /dev/cpuset/restricted/cpus
+    chown system system /dev/cpuset/camera-daemon/cpus
+    chmod 0664 /dev/cpuset/camera-daemon/cpus
+
 on charger
     chmod 0664 /sys/class/Charging_Adapter/pd_adapter/usbpd_verifed
     chmod 0664 /sys/class/Charging_Adapter/pd_adapter/request_vdm_cmd
