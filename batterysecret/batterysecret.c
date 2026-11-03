@@ -25,6 +25,7 @@ static const char * const SYSFS_AUTH_PATHS[] = {
     "/sys/class/Charging_Adapter/pd_adapter/verify_process",
     "/sys/class/power_supply/bms/authentic",
     "/sys/class/power_supply/bms/verify_digest",
+    "/sys/class/power_supply/bms/device/verify_digest",
     "/sys/class/qcom-battery/verify_slave_flag",
     "/sys/class/qcom-battery/slave_authentic",
 };
