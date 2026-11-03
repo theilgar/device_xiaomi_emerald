@@ -76,15 +76,10 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Compressed Virtual A/B
-ifneq ($(WITH_GMS),true)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-TARGET_RO_FILE_SYSTEM_TYPE := ext4
-else
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
 PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 TARGET_RO_FILE_SYSTEM_TYPE := erofs
 PRODUCT_VENDOR_PROPERTIES += ro.virtual_ab.compression.threads=true
-endif
 
 # OS3 LK does not load the boot image ramdisk, so first stage needs
 # snapuserd from the vendor ramdisk.
@@ -226,7 +221,6 @@ PRODUCT_PACKAGES += \
     android.hardware.light-service.lineage
 
 # MediaCas
-TARGET_REQUIRES_HIDL_CAS_HAL := false
 PRODUCT_PACKAGES := $(filter-out android.hardware.cas@1.2-service android.hardware.cas@1.2-service-lazy,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES_SHIPPING_API_LEVEL_33 := $(filter-out android.hardware.cas@1.2-service,$(PRODUCT_PACKAGES_SHIPPING_API_LEVEL_33))
 

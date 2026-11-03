@@ -69,7 +69,9 @@ void vendor_load_properties() {
 
         if (access("/system/bin/recovery", F_OK) != 0) {
             property_override("bluetooth.device.default_name", v.marketname);
-            set_ro_build_prop("fingerprint", v.fingerprint, false);
+            property_override("ro.vendor.build.fingerprint", v.fingerprint);
+            property_override("ro.odm.build.fingerprint", v.fingerprint);
+            property_override("ro.lineage.build.stock_fingerprint", v.fingerprint);
         }
         break;
     }

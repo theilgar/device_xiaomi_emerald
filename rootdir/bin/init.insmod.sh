@@ -33,7 +33,7 @@ if [ -f $cfg_file ]; then
       "modprobe")
         insmod_arg=${arg}
         PAGE_SIZE=$(getconf PAGE_SIZE)
-        for partition in system_dlkm vendor
+        for partition in system_dlkm vendor_dlkm vendor
         do
           modules_dir_base="/${partition}/lib/modules"
           if [ $PAGE_SIZE -eq 16384 ]; then

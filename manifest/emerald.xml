@@ -7,7 +7,7 @@
     <project name="theilgar/device_xiaomi_emerald" path="device/xiaomi/emerald" remote="github" revision="lineage-24.0" />
 
     <!-- Kernel Source (Google AOSP Linux 6.12 GKI for Android 16/17) -->
-    <project name="kernel/common" path="kernel/common" remote="aosp" revision="android16-6.12" clone-depth="1" />
+    <project name="kernel/common" path="kernel/common" remote="aosp" revision="android16-6.12-lts" clone-depth="1" />
 
     <!-- Kernel Headers & Device Modules Fallback -->
     <project name="theilgar/device_xiaomi_emerald-kernel" path="device/xiaomi/emerald-kernel" remote="github" revision="lineage-24.0" />

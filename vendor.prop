@@ -100,9 +100,6 @@ ro.vendor.sensors.xiaomi.udfps=true
 # FM
 ro.vendor.fm.platform=mt6631_6635
 
-# FUSE
-persist.sys.fuse.passthrough.enable=true
-
 # Graphics
 debug.graphics.game_default_frame_rate.disabled=true
 graphics.gpu.profiler.support=true
@@ -188,7 +185,6 @@ vendor.powerhal.interaction.max=150
 # PQ
 ro.vendor.mtk_pq_color_mode=1
 ro.vendor.mtk_pq_support=2
-sys.displayfeature_hidl=false
 ro.vendor.pq.mtk_aal_support=1
 ro.vendor.pq.mtk_ai_scence_pq_support=0
 ro.vendor.pq.mtk_ai_sdr_to_hdr_support=0
@@ -338,9 +334,6 @@ ro.zram.periodic_wb_delay_hours=24
 
 # Zygote
 zygote.critical_window.minute=10
-
-# Dex2oat (speed-profile optimizes frequently used methods, saving 2-5GB storage)
-pm.dexopt.bg-dexopt=speed-profile
 
 # Visual performance
 vendor.perf.framepacing.enable=1

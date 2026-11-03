@@ -96,16 +96,16 @@ BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/dts/out/dtb
 TARGET_USES_VULKAN := true
 
 # Kernel modules
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load.vendor_ramdisk))
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load.recovery))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(if $(wildcard $(KERNEL_PATH)/modules.load.vendor_ramdisk),$(strip $(shell cat $(KERNEL_PATH)/modules.load.vendor_ramdisk)))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(if $(wildcard $(KERNEL_PATH)/modules.load.recovery),$(strip $(shell cat $(KERNEL_PATH)/modules.load.recovery)))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules_ramdisk/*.ko)
 
 # Vendor modules (installed to vendor_dlkm)
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load))
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(if $(wildcard $(KERNEL_PATH)/modules.load),$(strip $(shell cat $(KERNEL_PATH)/modules.load)))
 BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules_dlkm/*.ko)
 
 # System modules (installed to system_dlkm)
-BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules.load.system_dlkm))
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(if $(wildcard $(KERNEL_PATH)/modules.load.system_dlkm),$(strip $(shell cat $(KERNEL_PATH)/modules.load.system_dlkm)))
 BOARD_SYSTEM_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/system_dlkm/*.ko)
 
 
@@ -206,8 +206,8 @@ DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/vintf/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(DEVICE_PATH)/configs/vintf/framework_compatibility_matrix.xml \
-    hardware/mediatek/vintf/mediatek_framework_compatibility_matrix.xml \
-    hardware/xiaomi/vintf/xiaomi_framework_compatibility_matrix.xml
+    $(wildcard hardware/mediatek/vintf/mediatek_framework_compatibility_matrix.xml) \
+    $(wildcard hardware/xiaomi/vintf/xiaomi_framework_compatibility_matrix.xml)
 
 # SEPolicy
 include device/mediatek/sepolicy_vndr/SEPolicy.mk

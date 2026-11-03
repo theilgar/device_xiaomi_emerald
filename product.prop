@@ -23,3 +23,11 @@ persist.vendor.vilte_support=0
 persist.vendor.ims_support=1
 persist.vendor.volte_support=1
 
+# Dex2oat
+pm.dexopt.bg-dexopt=speed-profile
+
+# Display
+sys.displayfeature_hidl=false
+
+# FUSE
+persist.sys.fuse.passthrough.enable=true
