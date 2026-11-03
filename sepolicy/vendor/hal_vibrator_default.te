@@ -1,2 +1,7 @@
 allow hal_vibrator_default input_device:dir r_dir_perms;
 allow hal_vibrator_default input_device:chr_file rw_file_perms;
+
+# sysfs leds vibrator access (activate, duration, state, vmax)
+allow hal_vibrator_default sysfs_leds:file rw_file_perms;
+allow hal_vibrator_default sysfs_leds:dir r_dir_perms;
+

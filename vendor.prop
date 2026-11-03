@@ -43,6 +43,7 @@ vendor.bluetooth.ldac.abr=true
 
 # Camera
 camera.disable_zsl_mode=1
+vendor.camera.aux.packagelist=org.lineageos.aperture,com.google.android.GoogleCamera,com.google.android.GoogleCameraEng,com.google.android.GoogleCamera.Urnyx,com.google.android.GoogleCameraGood,com.google.android.GoogleCamera.Canary,net.sourceforge.opencamera,com.android.camera
 persist.vendor.camera3.pipeline.bufnum.base.imgo=4
 persist.vendor.camera3.pipeline.bufnum.base.lcso=4
 persist.vendor.camera3.pipeline.bufnum.base.rrzo=4

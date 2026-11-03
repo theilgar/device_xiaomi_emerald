@@ -247,3 +247,7 @@ $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class
 $(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
 $(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
 $(call soong_config_set_bool,lineage_health,charging_control_supports_bypass,false)
+
+# Vibrator: Enable rich haptic effects and amplitude control in open-source AIDL HAL
+$(call soong_config_set,mediatek_vibrator,supports_effects,true)
+

@@ -36,6 +36,7 @@ ro.audio.ihaladaptervendorextension_enabled=true
 ro.audio.silent=0
 ro.audio.usb.period_us=16000
 ro.camera.sound.forced=0
+ro.camera.aux.packagelist=org.lineageos.aperture,com.google.android.GoogleCamera,com.google.android.GoogleCameraEng,com.google.android.GoogleCamera.Urnyx,com.google.android.GoogleCameraGood,com.google.android.GoogleCamera.Canary,net.sourceforge.opencamera,com.android.camera
 ro.vendor.audio.notification.single=true
 
 # Zygote
