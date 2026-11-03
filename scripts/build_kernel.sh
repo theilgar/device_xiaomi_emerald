@@ -20,7 +20,7 @@ echo "============================================="
 if [ ! -d "${KERNEL_DIR}" ]; then
     echo "Kernel source directory not found at: ${KERNEL_DIR}"
     echo "To fetch Google AOSP Linux 6.12 GKI source, run:"
-    echo "  git clone --depth 1 -b android16-6.12 https://android.googlesource.com/kernel/common ${KERNEL_DIR}"
+    echo "  git clone --depth 1 -b android16-6.12-lts https://android.googlesource.com/kernel/common ${KERNEL_DIR}"
     exit 1
 fi
 
