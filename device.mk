@@ -206,9 +206,11 @@ PRODUCT_PACKAGES += \
     android.hardware.health-service.mediatek \
     android.hardware.health-service.mediatek-recovery
 
-# HotwordEnrollement
+# HotwordEnrollement & Privapp Permissions
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/permissions/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-com.mediatek.ims.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-com.mediatek.ims.xml \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-com.mediatek.telephony.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-com.mediatek.telephony.xml
 
 # Keymint
 PRODUCT_PACKAGES += \
@@ -431,10 +433,16 @@ PRODUCT_PACKAGES += \
     ApertureOverlayEmerald \
     FrameworksResOverlayEmerald \
     LineageResXiaomi \
+    MssiFrameworkTelephonyOverlayProduct \
+    MssiTelephonyOverlayProduct \
     SettingsResOverlayEmerald \
     SystemUIOverlayEmerald \
     TetheringResOverlayEmerald \
     WifiResOverlayEmerald
+
+# Init scripts
+PRODUCT_PACKAGES += \
+    emerald_noconsole.rc
 
 # Properties
 include $(LOCAL_PATH)/vendor_logtag.mk

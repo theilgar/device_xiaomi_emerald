@@ -164,6 +164,10 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
+# Init (Dynamic hardware SKU loading for Redmi Note 13 Pro / POCO M6 Pro / Redmi Note 14S)
+$(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):init_emerald)
+TARGET_INIT_VENDOR_LIB := init_emerald
+
 # Android Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_ROLLBACK_INDEX := 0
