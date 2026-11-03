@@ -102,7 +102,6 @@
 /(odm|vendor/odm|vendor|system/vendor)/bin/hw/vendor.xiaomi.sensor.citsensorservice@2.0-service u:object_r:vendor_hal_citsensorservice_xiaomi_default_exec:s0
 
 # Thermal
-/(vendor|system/vendor)/bin/mi_thermald                                                                u:object_r:vendor_mi_thermald_exec:s0
 /sys/devices/virtual/thermal/thermal_message/sconfig                                                   u:object_r:vendor_sysfs_thermalconfig:s0
 
 # Touchfeatures
