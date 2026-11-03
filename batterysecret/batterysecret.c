@@ -7,6 +7,10 @@
  * Handles USB-PD and BMS fast charge handshake / verification via sysfs.
  */
 
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE
+#endif
+
 #define LOG_TAG "batterysecret_oss"
 
 #include <stdio.h>
@@ -77,9 +81,9 @@ int main(void) {
         ssize_t len = recv(sock, buffer, sizeof(buffer) - 1, 0);
         if (len > 0) {
             buffer[len] = '\0';
-            if (strstr(buffer, "SUBSYSTEM=power_supply") != NULL ||
-                strstr(buffer, "SUBSYSTEM=typec") != NULL ||
-                strstr(buffer, "SUBSYSTEM=tcpc") != NULL) {
+            if (memmem(buffer, len, "SUBSYSTEM=power_supply", 22) != NULL ||
+                memmem(buffer, len, "SUBSYSTEM=typec", 15) != NULL ||
+                memmem(buffer, len, "SUBSYSTEM=tcpc", 14) != NULL) {
                 handle_charge_auth();
             }
         } else if (len < 0 && errno != EINTR) {

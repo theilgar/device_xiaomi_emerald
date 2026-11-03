@@ -17,4 +17,3 @@ service emerald_boot_watchdog /vendor/bin/emerald_boot_watchdog.sh
     group root system
     oneshot
     disabled
-    seclabel u:r:emerald_boot_watchdog:s0

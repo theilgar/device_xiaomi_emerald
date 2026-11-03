@@ -399,9 +399,7 @@ PRODUCT_PACKAGES += \
     init.recovery.mt6789.rc \
     init.recovery.usb.rc \
     fstab.mt6789 \
-    fstab.mt6789.vendor_ramdisk \
     fstab.emmc \
-    fstab.emmc.vendor_ramdisk \
     ueventd.mt6789.rc
 
 PRODUCT_COPY_FILES += \

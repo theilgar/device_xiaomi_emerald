@@ -85,8 +85,7 @@ else
     TARGET_KERNEL_SOURCE := device/xiaomi/emerald-kernel/kernel-headers
     BOARD_KERNEL_IMAGE_NAME := Image.lz4
     LOCAL_KERNEL := $(KERNEL_PATH)/$(BOARD_KERNEL_IMAGE_NAME)
-    PRODUCT_COPY_FILES += \
-        $(LOCAL_KERNEL):kernel
+    TARGET_PREBUILT_KERNEL := $(LOCAL_KERNEL)
 endif
 
 # DTB and DTBO (built from source in device/xiaomi/emerald/dts)
@@ -128,6 +127,7 @@ BOARD_USES_METADATA_PARTITION := true
 BOARD_USES_VENDOR_DLKMIMAGE := true
 BOARD_USES_SYSTEM_DLKMIMAGE := true
 
+TARGET_RO_FILE_SYSTEM_TYPE ?= erofs
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := $(TARGET_RO_FILE_SYSTEM_TYPE)
 BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := $(TARGET_RO_FILE_SYSTEM_TYPE)
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := $(TARGET_RO_FILE_SYSTEM_TYPE)
@@ -160,13 +160,13 @@ TARGET_SCREEN_DENSITY := 420
 
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
+TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Init (Dynamic hardware SKU loading for Redmi Note 13 Pro / POCO M6 Pro / Redmi Note 14S)
-$(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):init_emerald)
-TARGET_INIT_VENDOR_LIB := init_emerald
+$(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH)/libinit:init_emerald)
 
 # Android Verified Boot
 BOARD_AVB_ENABLE := true
@@ -219,7 +219,6 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 BOARD_WLAN_DEVICE := MediaTek
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
-BOARD_HOSTAPD_DRIVER := $(BOARD_WPA_SUPPLICANT_DRIVER)
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := $(BOARD_HOSTAPD_PRIVATE_LIB)
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_HOSTAPD_DRIVER := $(BOARD_WPA_SUPPLICANT_DRIVER)
@@ -236,7 +235,6 @@ WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{AP_BRIDGED}, 1},}
 WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{AP}, 1}}
 WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{P2P}, 1}}
 WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{NAN}, 1}}
-WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 # Inherit the proprietary files
 include vendor/xiaomi/emerald/BoardConfigVendor.mk
